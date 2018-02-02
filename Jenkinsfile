@@ -98,7 +98,7 @@ node{
 
 stage name:'Deploy to staging', concurrency:1
 
-    node {
+    node('monitor') {
 
                 //sh 'sudo docker run -d -p=3000:80 --network=bundlev2_prodnetwork nginx'
 
@@ -114,41 +114,41 @@ stage name:'Deploy to staging', concurrency:1
 
 
 
-node{
+//node{
 
-    def mvnHome
+//    def mvnHome
 
-    dir('FunctionalTests'){
-
-
-
-        stage('Get Functional Test Scripts'){                        
-
-            git 'https://github.com/shree47/jenkins-selenium-int-testing.git'
-
-            mvnHome = tool 'Maven'
-
-        }
+//    dir('FunctionalTests'){
 
 
 
-        stage('Run Tests') {
+//        stage('Get Functional Test Scripts'){                        
 
-            sh "'${mvnHome}/bin/mvn' -Dgrid.server.url=http://10.0.0.6:4444/wd/hub clean test "
+//            git 'https://github.com/shree47/jenkins-selenium-int-testing.git'
 
-        }
+//            mvnHome = tool 'Maven'
 
-        stage('Functional Test Results') {
-
-            junit '**/target/surefire-reports/TEST-*.xml'
-
-        }
-
-    }
+//        }
 
 
 
-}
+//        stage('Run Tests') {
+
+//            sh "'${mvnHome}/bin/mvn' -Dgrid.server.url=http://10.0.0.6:4444/wd/hub clean test "
+
+//        }
+
+//        stage('Functional Test Results') {
+
+//            junit '**/target/surefire-reports/TEST-*.xml'
+
+//        }
+
+//    }
+
+
+
+//}
 
 
 
