@@ -18,8 +18,8 @@ node{
             }
         }
         
-/        stage('SonarQube Analysis') { 
-/           // def mvnHome
+        stage('SonarQube Analysis') { 
+           // def mvnHome
             //mvnHome = tool 'Maven'
             withSonarQubeEnv('Sonar') { f
                 if (isUnix()) {
