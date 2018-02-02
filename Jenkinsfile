@@ -18,10 +18,10 @@ node{
             }
         }
         
-        stage('SonarQube Analysis') { 
-           // def mvnHome
+/        stage('SonarQube Analysis') { 
+/           // def mvnHome
             //mvnHome = tool 'Maven'
-            withSonarQubeEnv('Sonar') { 
+            withSonarQubeEnv('Sonar') { f
                 if (isUnix()) {
                     sh "'${mvnHome}/bin/mvn' org.sonarsource.scanner.maven:sonar-maven-plugin:3.3.0.603:sonar -f pom.xml "+                     " -Dsonar.projectKey=org.sonarqube:java-sonar " +
                     " -Dsonar.projectKey=org.sonarqube:java-sonar " +
@@ -47,7 +47,7 @@ node{
 }
 
 stage name:'Deploy to staging', concurrency:1
-    node {
+    node('monitor') {
                 //sh 'sudo docker run -d -p=3000:80 --network=bundlev2_prodnetwork nginx'
         dir('BuildQuality'){
         sh 'sudo docker-compose up -d --build'
@@ -55,24 +55,24 @@ stage name:'Deploy to staging', concurrency:1
                 
 }
 
-node{
-    def mvnHome
-    dir('FunctionalTests'){
+//node{
+ //   def mvnHome
+ //   dir('FunctionalTests'){
 
-        stage('Get Functional Test Scripts'){                        
-            git 'https://github.com/shree47/jenkins-selenium-int-testing.git'
-            mvnHome = tool 'Maven'
-        }
+ //       stage('Get Functional Test Scripts'){                        
+ //           git 'https://github.com/shree47/jenkins-selenium-int-testing.git'
+ //           mvnHome = tool 'Maven'
+//        }
 
-        stage('Run Tests') {
-            sh "'${mvnHome}/bin/mvn' -Dgrid.server.url=http://10.0.0.6:4444/wd/hub clean test "
-        }
-        stage('Functional Test Results') {
-            junit '**/target/surefire-reports/TEST-*.xml'
-        }
-    }
+ //       stage('Run Tests') {
+ //           sh "'${mvnHome}/bin/mvn' -Dgrid.server.url=http://10.0.0.6:4444/wd/hub clean test "
+  //      }
+ //       stage('Functional Test Results') {
+  //          junit '**/target/surefire-reports/TEST-*.xml'
+  //      }
+  //  }
 
-}
+//}
 
 stage name:'Shutdown staging'
     node {
