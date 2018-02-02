@@ -23,8 +23,7 @@ node{
             //mvnHome = tool 'Maven'
             withSonarQubeEnv('Sonar') { 
                 if (isUnix()) {
-                    sh "'${mvnHome}/bin/mvn' org.sonarsource.scanner.maven:sonar-maven-plugin:3.3.0.603:sonar -f pom.xml "+ 
-                    " -Dsonar.projectKey=org.sonarqube:java-sonar " +
+                    sh "'${mvnHome}/bin/mvn' org.sonarsource.scanner.maven:sonar-maven-plugin:3.3.0.603:sonar -f pom.xml "+                     " -Dsonar.projectKey=org.sonarqube:java-sonar " +
                     " -Dsonar.projectKey=org.sonarqube:java-sonar " +
                     " -Dsonar.projectName='Java :: Simple Spring Project' " +
                     " -Dsonar.projectVersion=1.0 " +
@@ -66,7 +65,7 @@ node{
         }
 
         stage('Run Tests') {
-            sh "'${mvnHome}/bin/mvn' -Dgrid.server.url=http://seleniumhub:4444/wd/hub clean test "
+            sh "'${mvnHome}/bin/mvn' -Dgrid.server.url=http://10.0.0.6:4444/wd/hub clean test "
         }
         stage('Functional Test Results') {
             junit '**/target/surefire-reports/TEST-*.xml'
