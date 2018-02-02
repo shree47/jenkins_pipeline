@@ -61,7 +61,6 @@ node{
                     " -Dsonar.language=java " +
 
                     " -Dsonar.sources=. " +
-
                     " -Dsonar.tests=. " +
 
                     " -Dsonar.test.inclusions='**/*Test*/**' " +
@@ -69,7 +68,6 @@ node{
                     " -Dsonar.exclusions='**/*Test*/**' "
 
                 } else {
-
                     bat (/"${mvnHome}\bin\mvn" org.sonarsource.scanner.maven:sonar-maven-plugin:3.3.0.603:sonar -f pom.xml -Dsonar.projectKey=org.sonarqube:java-sonar -Dsonar.projectName="Java :: Simple Spring Project" /)
 
                 }    
@@ -98,7 +96,7 @@ node{
 
 stage name:'Deploy to staging', concurrency:1
 
-    node('monitor') {
+    node {
 
                 //sh 'sudo docker run -d -p=3000:80 --network=bundlev2_prodnetwork nginx'
 
