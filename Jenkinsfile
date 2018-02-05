@@ -37,6 +37,13 @@ node{
         }
 
         
+	stage('Build Docker image') {
+
+
+		app=docker.build("shree47/simple-spring")	
+	}
+
+
 
         stage('SonarQube Analysis') { 
 
