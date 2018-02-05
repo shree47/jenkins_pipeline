@@ -33,6 +33,19 @@ node{
             }
 
         }
+		
+		 stage('Unit Test Results') {
+
+			try	{
+				junit '**/target/surefire-reports/TEST-*.xml'
+				//archive 'target/*.jar'
+			}
+			catch(err)	{
+				step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
+				throw err
+			}
+		
+		}
 
         stage('SonarQube Analysis') { 
           // def mvnHome
@@ -74,20 +87,6 @@ node{
 
 
         }
-
-
-        stage('Unit Test Results') {
-
-			try	{
-				junit '**/target/surefire-reports/TEST-*.xml'
-				//archive 'target/*.jar'
-			}
-			catch(err)	{
-				step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
-				throw err
-			}
-		
-		}
 
 
 		stage('Build Docker image') {
