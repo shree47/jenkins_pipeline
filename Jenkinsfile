@@ -78,12 +78,16 @@ node{
 
         stage('Unit Test Results') {
 
-
-            junit '**/target/surefire-reports/TEST-*.xml'
-
-            //archive 'target/*.jar'
-
-        }
+			try	{
+				junit '**/target/surefire-reports/TEST-*.xml'
+				//archive 'target/*.jar'
+			}
+			catch(err)	{
+				step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
+				throw err
+			}
+		
+		}
 
 
 		stage('Build Docker image') {
