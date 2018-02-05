@@ -55,3 +55,22 @@ node{
 	}
 
     
+   }
+	
+}	
+
+stage name:'Shutdown staging'
+
+    node {
+
+                
+
+        dir('BuildQuality'){
+
+        sh 'sudo docker-compose stop'
+
+    }
+
+                
+
+}
