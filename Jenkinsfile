@@ -87,20 +87,6 @@ node{
 
 
         }
-
-		stage("Quality Gate")	{	
-			
-				timeout(time: 1, unit: 'HOURS')	{
-					def qg=waitForQualityGate()
-					if(qg.status != 'OK')	{
-					
-						error "Pipeline aborted due to qulaity agte failure : ${qg.status}"
-					
-					}
-				}
-		}
-		
-		
 		
 
 		stage('Build Docker image') {
