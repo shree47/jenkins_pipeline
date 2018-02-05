@@ -44,18 +44,6 @@ node{
 	}
 
 
-	stage('Push to Image')	{
-
-		docker.withRegistry('https://registry.hub.docker.com','shree47')	{
-			app.push(""${env.BUILD_NUMBER}")
-            		app.push("latest")			
-
-		}
-		
-
-	}		
-
-
         stage('SonarQube Analysis') { 
 
            // def mvnHome
