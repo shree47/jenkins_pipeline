@@ -109,7 +109,7 @@ node{
 
 }
 
-/*
+
 stage name:'Deploy to staging', concurrency:1
 
     node {
@@ -152,7 +152,7 @@ node{
 
     }
 
-}*/
+}
 
 node ('monitor')	{
 
