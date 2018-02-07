@@ -154,6 +154,16 @@ node{
 
 }
 
+node ('monitor')	{
+
+	stage('Pull Image to Slave')	{
+		
+	
+	}
+}
+
+
+
 stage name:'Shutdown staging'
 
     node {
