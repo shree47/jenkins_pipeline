@@ -158,6 +158,7 @@ node ('monitor')	{
 
 	stage('Pull Image to Slave')	{
 	
+		sh 'docker login'
 		sh 'docker pull shree47/simple-spring'	
 		sh 'docker run simple-spring:latest'
 	}
