@@ -157,7 +157,8 @@ node{
 node ('monitor')	{
 
 	stage('Pull Image to Slave')	{
-		
+	
+		sh 'docker pull shree47/simple-spring'	
 	
 	}
 }
