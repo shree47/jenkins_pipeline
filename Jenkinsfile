@@ -156,11 +156,12 @@ node{
 
 node ('monitor')	{
 
-	stage('Pull Image to Slave')	{
+	stage('Pull & Run Image to Slave')	{
 	
-		sh 'docker login -u="shree47" -p="Jun2015!"' 
+		//sh 'docker login -u="shree47" -p="Jun2015!"' 
 		//sh 'docker pull shree47/simple-spring'	
-		sh 'docker run shree47/simple-spring'
+		//sh 'docker run shree47/simple-spring'
+		docker.run("shree47/simple-spring")
 	}
 }
 
