@@ -161,8 +161,9 @@ node ('monitor')	{
 		//sh 'docker login -u="shree47" -p="Jun2015!"' 
 		//sh 'docker pull shree47/simple-spring'	
 		
-		sh 'docker run shree47/simple-spring'
-		sh 'docker stop shree47/simple-spring'
+		sh 'docker run -rm -d --name="test" shree47/simple-spring'
+		
+		sh 'docker stop test'
 		
 		//docker.run("shree47/simple-spring")
 	}
