@@ -164,7 +164,7 @@ node ('monitor')	{
 		
 		//sh 'docker run -d --name test shree47/simple-spring'
 		
-		sh 'docker pull shree47/simple-spring'	
+		//sh 'docker pull shree47/simple-spring'	
 		
 		sh 'docker run -d --name test shree47/simple-spring'
 		
