@@ -103,11 +103,14 @@ node{
 				app.push("latest")
 			}
 		
-			sh 'docker rmi -f registry.hub.docker.com/shree47/simple-spring'
+			
 		}
 
     }
 
+	
+	sh 'docker rmi -f shree47/simple-spring'
+			sh 'docker rmi -f registry.hub.docker.com/shree47/simple-spring'
 }
 
 
