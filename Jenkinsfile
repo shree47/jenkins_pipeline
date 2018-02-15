@@ -164,9 +164,9 @@ node ('monitor')	{
 		
 		sh 'docker run -d --name test shree47/simple-spring'
 		
-		//sh 'docker stop test'
+		sh 'docker stop test'
 		
-		//sh 'docker rm test'
+		sh 'docker rm -f test'
 		
 		//docker.run("shree47/simple-spring")
 	}
