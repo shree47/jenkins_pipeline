@@ -160,12 +160,13 @@ node ('monitor')	{
 	
 		//sh 'docker login -u="shree47" -p="Jun2015!"' 
 		//sh 'docker pull shree47/simple-spring'	
+		//sh 'docker run -d --name test shree47/simple-spring'
 		
-		sh 'docker run -d --name test shree47/simple-spring'
+		sh 'docker run -d shree47/simple-spring'
 		
-		sh 'docker stop test'
+		//sh 'docker stop test'
 		
-		sh 'docker rm -f test'
+		//sh 'docker rm test'
 		
 		//docker.run("shree47/simple-spring")
 	}
