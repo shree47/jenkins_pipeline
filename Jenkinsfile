@@ -102,6 +102,8 @@ node{
 				app.push("${env.BUILD_NUMBER}")
 				app.push("latest")
 			}
+		
+			sh 'docker rmi -f shree47/simple-spring'
 		}
 
     }
