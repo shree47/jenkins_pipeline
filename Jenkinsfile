@@ -158,8 +158,9 @@ node{
 
 }
 
-node ('monitor')	{
+//node ('monitor')	{
 
+node {
 	stage('Pull & Run Image to Slave')	{
 	
 		//sh 'docker login -u="shree47" -p="Jun2015!"' 
